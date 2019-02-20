@@ -6,10 +6,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
+const path = require('path');
 
 const app = express();
 
 //middleware
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(passport.initialize());
