@@ -26,9 +26,9 @@ app.use('/api/job', job);
 
 require('http-server')
   .createServer()
-  .listen(process.env.PORT);
+  .listen(process.env.PORT || 5000);
 
-// app.listen(process.env.PORT, () => {
-//   console.log(`Server started on http://localhost:${process.env.PORT}`);
-// });
-//start server
+app.listen(process.env.PORT, () => {
+  console.log(`Server started on http://localhost:${process.env.PORT}`);
+});
+// start server
