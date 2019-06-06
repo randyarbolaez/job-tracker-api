@@ -26,7 +26,6 @@ module.exports.jobCreate = (req, res, next) => {
 module.exports.jobList = (req, res, next) => {
   Job.find({ user: req._id }, (err, myJobs) => {
     if (!err) {
-      console.log(`${myJobs} <==============>myJobs`);
       res.send(myJobs);
     }
   });
