@@ -21,6 +21,8 @@ app.all('*', function(req, res, next) {
   next();
 });
 
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+
 //middleware
 
 // DB Setup
