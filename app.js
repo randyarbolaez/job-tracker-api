@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
+const mongoose = require('mongoose');
 
 const app = express();
 
@@ -22,6 +23,20 @@ app.all('*', function(req, res, next) {
 
 //middleware
 
+// DB Setup
+
+mongoose.Promise = Promise;
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log('Connected to Mongo!');
+  })
+  .catch(err => {
+    console.error('Error connecting to mongo', err);
+  });
+
+// DB Setup
+
 //routes
 const auth = require('./routes/auth.router');
 app.use('/api', auth);
@@ -30,7 +45,9 @@ app.use('/api/job', job);
 //routes
 
 //start server
-app.listen(process.env.PORT, () => {
-  console.log(`Server started on http://localhost:${process.env.PORT}`);
-});
+// app.listen(process.env.PORT, () => {
+//   console.log(`Server started on http://localhost:${process.env.PORT}`);
+// });
 // start server
+
+module.exports = app;
