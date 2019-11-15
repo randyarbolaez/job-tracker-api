@@ -1,53 +1,36 @@
-require('./config/config');
-require('./models/db');
-require('./config/passportConfig');
+require("./config/config");
+require("./models/db");
+require("./config/passportConfig");
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const passport = require('passport');
-const mongoose = require('mongoose');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const passport = require("passport");
+const mongoose = require("mongoose");
 
 const app = express();
 
 //middleware
 app.use(bodyParser.json());
-app.use(cors());
+// app.use(cors());
 app.use(passport.initialize());
 
-app.all('*', function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+app.all("*", function(req, res, next) {
+  // res.header("Access-Control-Allow-Origin", "*");
+  // res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
 });
-
 //middleware
 
-// DB Setup
-
-mongoose.Promise = Promise;
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log('Connected to Mongo!');
-  })
-  .catch(err => {
-    console.error('Error connecting to mongo', err);
-  });
-
-// DB Setup
-
 //routes
-const auth = require('./routes/auth.router');
-app.use('/api', auth);
-const job = require('./routes/job.router');
-app.use('/api/job', job);
+const auth = require("./routes/auth.router");
+app.use("/api", auth);
+const job = require("./routes/job.router");
+app.use("/api/job", job);
 //routes
 
 //start server
-// app.listen(process.env.PORT, () => {
-//   console.log(`Server started on http://localhost:${process.env.PORT}`);
-// });
+app.listen(process.env.PORT, () => {
+  console.log(`Server started on http://localhost:${process.env.PORT}`);
+});
 // start server
-
-module.exports = app;
