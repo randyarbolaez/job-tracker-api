@@ -31,7 +31,7 @@ app.use("/api/job", job);
 //routes
 
 //start server
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log(`Server started on http://localhost:${process.env.PORT}`);
 });
 // start server
