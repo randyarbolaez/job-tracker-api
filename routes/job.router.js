@@ -41,7 +41,7 @@ router.post("/create", jwtHelper.verifyJwtToken, (req, res, next) => {
 router.get("/joblist", jwtHelper.verifyJwtToken, (req, res, next) => {
   Job.find({ user: req._id })
     .then(allJobs => {
-      res.send({ allJobs });
+      res.send(allJobs);
     })
     .catch(err => {
       res.send({ err });
