@@ -9,6 +9,7 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
+const _ = require("lodash");
 
 const jwtHelper = require("../config/jwtHelper");
 
@@ -70,7 +71,7 @@ router.post("/authenticate", (req, res, next) => {
   })(req, res);
 });
 
-router.get('/userProfile', jwtHelper.verifyJwtToken, (req, res, next) => {
+router.get("/userProfile", jwtHelper.verifyJwtToken, (req, res, next) => {
   User.findOne({ _id: req._id }, (err, user) => {
     if (!user) {
       return res
@@ -79,11 +80,11 @@ router.get('/userProfile', jwtHelper.verifyJwtToken, (req, res, next) => {
     } else {
       return res.status(200).json({
         status: true,
-        user: _.pick(user, ['username']),
+        user: _.pick(user, ["username"])
       });
     }
   });
-};
+});
 
 module.exports.userProfile = (req, res, next) => {
   User.findOne({ _id: req._id }, (err, user) => {
@@ -94,7 +95,7 @@ module.exports.userProfile = (req, res, next) => {
     } else {
       return res.status(200).json({
         status: true,
-        user: _.pick(user, ['username']),
+        user: _.pick(user, ["username"])
       });
     }
   });
