@@ -68,4 +68,34 @@ router.post("/authenticate", (req, res, next) => {
   })(req, res);
 });
 
+router.get('/userProfile', jwtHelper.verifyJwtToken, (req, res, next) => {
+  User.findOne({ _id: req._id }, (err, user) => {
+    if (!user) {
+      return res
+        .status(404)
+        .json({ status: false, message: "Username wasn't found" });
+    } else {
+      return res.status(200).json({
+        status: true,
+        user: _.pick(user, ['username']),
+      });
+    }
+  });
+};
+
+module.exports.userProfile = (req, res, next) => {
+  User.findOne({ _id: req._id }, (err, user) => {
+    if (!user) {
+      return res
+        .status(404)
+        .json({ status: false, message: "Username wasn't found" });
+    } else {
+      return res.status(200).json({
+        status: true,
+        user: _.pick(user, ['username']),
+      });
+    }
+  });
+};
+
 module.exports = router;
