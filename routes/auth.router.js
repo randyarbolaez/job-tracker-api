@@ -10,6 +10,8 @@ const bcryptSalt = 10;
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 
+const jwtHelper = require("../config/jwtHelper");
+
 router.post("/signup", (req, res, next) => {
   const salt = bcrypt.genSaltSync(bcryptSalt);
 
