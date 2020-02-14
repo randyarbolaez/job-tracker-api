@@ -1,44 +1,46 @@
-const mongoose = require('mongoose');
-
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+
 const jobSchema = new Schema(
   {
     jobListingUrl: {
-      type: String,
+      type: String
     },
     companyName: {
-      type: String,
+      type: String
     },
     companyNameUrl: {
-      type: String,
+      type: String
     },
     jobPosting: {
-      type: String,
+      type: String
     },
     notes: {
-      type: String,
+      type: String
     },
     location: {
-      type: String,
+      type: String
     },
     personOfContact: {
-      type: String,
+      type: String
     },
     personOfContactUrl: {
-      type: String,
+      type: String
     },
     mailToLink: {
-      type: String,
+      type: String
     },
-    user: Schema.Types.ObjectId,
+    user: Schema.Types.ObjectId
   },
 
   {
     timestamps: {
-      createdAt: 'created_at',
-      updatedAt: 'updated_at',
-    },
+      createdAt: "created_at",
+      updatedAt: "updated_at"
+    }
   }
 );
 
-mongoose.model('Job', jobSchema);
+const Job = mongoose.model("Job", jobSchema);
+
+module.exports = Job;

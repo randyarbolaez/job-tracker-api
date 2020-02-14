@@ -1,4 +1,8 @@
 # Dependency directory
 node_modules
 
-./config/config.json
+# Debug log from npm
+npm-debug.log
+
+# Environment Variables should NEVER be published
+/.env
