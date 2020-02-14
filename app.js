@@ -14,13 +14,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(passport.initialize());
-
-app.all("*", function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:4200");
-  res.header("Access-Control-Allow-Credentials", "true");
-  // res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
-});
 //middleware
 
 //routes
@@ -31,7 +24,7 @@ app.use("/api/job", job);
 //routes
 
 //start server
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log(`Server started on http://localhost:${process.env.PORT}`);
 });
 // start server

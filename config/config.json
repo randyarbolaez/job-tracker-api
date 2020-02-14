@@ -3,12 +3,12 @@
     "PORT": 3000,
     "MONGODB_URI": "mongodb://localhost:27017/job-tracker",
     "JWT_SECRET": "RANDYISREALLYCOOL123",
-    "JWT_EXP": "10m"
+    "JWT_EXP": "10d"
   },
   "production": {
     "PORT": 8080,
     "MONGODB_URI": "mongodb://heroku_2jgxs11v:fu2fs0ioln8ss10321j5c7h66t@ds145895.mlab.com:45895/heroku_2jgxs11v",
     "JWT_SECRET": "RANDYISREALLYCOOL123",
-    "JWT_EXP": "10m"
+    "JWT_EXP": "10d"
   }
 }
